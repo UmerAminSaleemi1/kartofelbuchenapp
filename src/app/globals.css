@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-forest-green: #244832;
+  --color-warm-cream: #e8dcc3;
+  --color-harvest-gold: #d5a34a;
+  --color-off-white: #f7f5ef;
+  --color-text: #1f2923;
+  --color-text-muted: #526157;
+  --color-border: #d8ddd8;
+  --color-focus: #a66f12;
+
+  --background: var(--color-off-white);
+  --foreground: var(--color-text);
+
+  --space-page-x: clamp(1rem, 4vw, 3rem);
+  --space-section-y: clamp(3.5rem, 8vw, 7rem);
+  --container-content: 80rem;
+  --radius-small: 0.5rem;
+  --radius-medium: 1rem;
+  --radius-large: 1.5rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-forest: var(--color-forest-green);
+  --color-cream: var(--color-warm-cream);
+  --color-gold: var(--color-harvest-gold);
+  --color-off-white: var(--color-off-white);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+  color-scheme: light;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
 }
 
 body {
+  min-height: 100%;
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-forest-green);
+  font-weight: 650;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-warm-cream);
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
